@@ -1534,7 +1534,7 @@ function allmod() {
         refreshmod || return 1
     fi
 
-    python -c "import json; print('\n'.join(sorted(json.load(open('$ANDROID_PRODUCT_OUT/module-info.json')).keys())))"
+    python3 -c "import json; print('\n'.join(sorted(json.load(open('$ANDROID_PRODUCT_OUT/module-info.json')).keys())))"
 }
 
 # Get the path of a specific module in the android tree, as cached in module-info.json. If any build change
@@ -1555,7 +1555,7 @@ function pathmod() {
         refreshmod || return 1
     fi
 
-    local relpath=$(python -c "import json, os
+    local relpath=$(python3 -c "import json, os
 module = '$1'
 module_info = json.load(open('$ANDROID_PRODUCT_OUT/module-info.json'))
 if module not in module_info:
